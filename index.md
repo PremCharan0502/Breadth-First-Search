@@ -9,40 +9,26 @@ Breadth First Search (BFS) algorithm traverses a graph in a breadthward motion a
 
 Syntax highlighted code block
 
-#include <iostream>
-using namespace std;
+   vector <int> v[10] ;  //Vector for maintaining adjacency list explained above
+    int level[10]; //To determine the level of each node
+    bool vis[10]; //Mark the node if visited 
+    void bfs(int s) {
+        queue <int> q;
+        q.push(s);
+        level[ s ] = 0 ;  //Setting the level of the source node as 0
+        vis[ s ] = true;
+        while(!q.empty())
+        {  int p = q.front();
+            q.pop();
+            for(int i = 0;i < v[ p ].size() ; i++)
+            {      if(vis[ v[ p ][ i ] ] == false)
+                {      //Setting the level of each node with an increment in the level of parent node
+                    level[ v[ p ][ i ] ] = level[ p ]+1;                 
+                     q.push(v[ p ][ i ]);
+                     vis[ v[ p ][ i ] ] = true;    }     }  } }
 
-int main()
-{//for first time
-	int hour1,minute1,second1;
-	//for second time
-	int hour2,minute2,second2;
-	//for the total(sum) time
-	int hour,minute,second;
-	//taking the input from user
-	cout<<"***Enter first time***"<<endl;
-	cout<<"Hours: "; cin>>hour1;
-	cout<<"Minutes: "; cin>>minute1;
-	cout<<"Seconds: "; cin>>second1;
-	//taking the input from user
-	cout<<"***Enter second time***"<<endl;
-	cout<<"Hours: "; cin>>hour2;
-	cout<<"Minutes: "; cin>>minute2;
-	cout<<"Seconds: "; cin>>second2;
-	//adding the entered times
-	second=second1+second2;
-	minute=minute1+minute2+(second/60);
-	hour=hour1+hour2+(minute/60);
-	minute=minute%60;
-	second=second%60;
-	//displaying total time
-	cout<<"Total Time is: "<<hour<<" hours "<<minute<<" minutes "<<second<< " seconds";
-return 0;}
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+For more details see [Basic writing and formatting syntax](https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/tutorial/).
 
 ### Jekyll Themes
 
